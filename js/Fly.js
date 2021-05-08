@@ -1,4 +1,4 @@
-class Slingshot{
+class Fly{
     constructor(bodyA,pointB) {
         var options = {
           bodyA: bodyA,
@@ -10,9 +10,7 @@ class Slingshot{
      
       this.sling=Constraint.create(options);
       this.pointB = pointB;  
-      this.sling1 = loadImage('sprites/sling1.png');
-      this.sling2 =loadImage('sprites/sling2.png');
-      this.sling3 =loadImage('sprites/sling3.png');//
+      
       World.add(world, this.sling);
 
     }
@@ -20,14 +18,13 @@ class Slingshot{
     fly(){
       this.sling.bodyA=null;
     }
+
     Attach(body){
       this.sling.bodyA=body
     }
-      display(){
+      /*display(){
 
-         // image(image_variable,x,y,opt_width,opt_height);
-        image(this.sling1,200,20)
-        image(this.sling2,170,20)
+        
 
         if(this.sling.bodyA){
           var pointA = this.sling.bodyA.position;
@@ -50,5 +47,5 @@ class Slingshot{
           pop(); 
         }
         
-      }
+      }*/
 }
