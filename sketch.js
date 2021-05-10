@@ -10,20 +10,24 @@ var backgroundImg;
 
 var obj;
 var superhero ;
+var moster ;
 var box,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19;
+var bg_sprite;
 
 function preload() {
-  backgroundImage = loadImage("Images/sky-clipart-2.jpg");
+  backgroundImg = loadImage("Images/sky-clipart-2.jpg");
 }
 
 function setup() {
   createCanvas(1200,400);
 
+  
   engine = Engine.create();
   world = engine.world;
 
   ground = new Ground(400,300,800,10);
   superhero= new Hero(150,50);
+  monster=new Monster(700,10)
   box = new Box(400,230,50,50);
   box1=new Box(400,200,50,50);
   box2=new Box(400,170,50,50);
@@ -46,6 +50,8 @@ function setup() {
    box19=new Box(550,110,50,50);
 
    herofly = new Fly(superhero.body,{x:150,y:170});
+   bg_sprite = createSprite(600,200);
+  
   
   // var options = {
   //   isStatic : true
@@ -59,11 +65,19 @@ function setup() {
 }
 
 function draw() {
- // background(backgroundImage);
-  background(0);
+  // // if(backgroundImg){
+  //   background(backgroundImg);  
+  // }
+  
+  //background(0);
   Engine.update(engine);
+  bg_sprite.addImage(backgroundImg);
+  bg_sprite.scale=0.7;
+ drawSprites();
+  monster.display();
   ground.display();
   superhero.display();
+
 
   box.display();
   box1.display();
@@ -86,9 +100,8 @@ function draw() {
    
    box18.display();
    box19.display();
+  
    
-   
-
   //rect(obj.position.x,obj.position.y,40,40);
 
 }
